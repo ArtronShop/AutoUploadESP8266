@@ -1,6 +1,14 @@
 # AutoUploadESP8266
 
-Use when you want to test esp8266 lots of in one click. now support only on esp8266 and test only on NodeMCU 1.0
+Use when you want to test esp8266 lots of in one click. Auto upload when you plug in the USB cable but port must be correct
+
+## Device Support
+
+it work for
+
+ * NodeMCU 1.0
+ * WeMos D1 mini (Lite/Basic/Pro)
+ * ESPIOX2
 
 ## Firmware
 
