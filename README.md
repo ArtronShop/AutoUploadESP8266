@@ -22,10 +22,6 @@ Now, fix to `115200` but band rate for upload firmware you can select in the pro
 
 Now, the program can't save settings, but next version it can do it
 
-## x86 or x64 version
-
-If your windows are 64 bit you must use x64 version. But if you use windows 32 bit you must use x86 version
-
 ## License
 This library open source. Copied, distributed for free (use CC-BY-4.0)
 
