@@ -1,9 +1,6 @@
 #Region ;**** Directives created by AutoIt3Wrapper_GUI ****
 #AutoIt3Wrapper_Icon=icon\espressif.ico
 #AutoIt3Wrapper_Outfile=AutoUploadESP8266_x86.exe
-#AutoIt3Wrapper_Outfile_x64=AutoUploadESP8266_x64.exe
-#AutoIt3Wrapper_Compile_Both=y
-#AutoIt3Wrapper_UseX64=y
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 #include <ButtonConstants.au3>
 #include <ComboConstants.au3>
@@ -43,7 +40,7 @@ Next
 $esptool = IniRead($configFile, "Upload", "esptool", ".\bin\esptool.exe")
 $parameters = IniRead($configFile, "Upload", "parameters", "-vv -cd nodemcu -cb {speed} -cp {port} -ca 0x00000 -cf {firmware}")
 $upload_speed = IniRead($configFile, "Upload", "speed", "921600")
-$upload_firmware = IniRead($configFile, "Upload", "firmware", "WiFiScan.ino.bin")
+$upload_firmware = IniRead($configFile, "Upload", "firmware", $listAllFile[1])
 
 #Region ### START Koda GUI section ### Form=C:\Users\Max\Dropbox\Autoit\AutoUploadESP8266\AutoUploadESP8266.kxf
 $Win = GUICreate("AutoUploadESP8266", 578, 397, -1, -1)
@@ -125,7 +122,7 @@ While 1
 			EndIf
 		Else
 			$nowPortList = _ComGetPortNames()
-			If UBound($nowPortList) <> UBound($PortList) Then
+			If _ArrayToString($nowPortList) <> _ArrayToString($PortList) Then
 				updatePortCombo($nowPortList)
 			EndIf
 			$PortList = $nowPortList
@@ -182,6 +179,7 @@ Func Start()
 			GUICtrlSetData($Log, $sOutput, 1)
 		EndIf
 	WEnd
+	Sleep(100) ; wait esptool close port
 	$resOpen = _CommSetPort(StringReplace($port, 'COM', ''), $sportSetError, "115200")
 	If $resOpen = 0 Then
 		_GUICtrlStatusBar_SetText($StatusBar, "Serial fali (can't open " & $port & ")", 0)
