@@ -22,6 +22,10 @@ Now, fix to `115200` but band rate for upload firmware you can select in the pro
 
 Now, the program can't save settings, but next version it can do it
 
+## Thanks !
+
+http://chemist.in.ua/ design and build logo
+
 ## License
 This library open source. Copied, distributed for free (use CC-BY-4.0)
 
